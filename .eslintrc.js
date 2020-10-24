@@ -34,7 +34,7 @@ module.exports = {
         'tsx': 'never'
       }
     ],
-    "no-use-before-define": "off"
+    'no-use-before-define': 'off'
   },
   settings: {
     'import/resolver': {
