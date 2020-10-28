@@ -1,50 +1,64 @@
-import React from 'react'
+import React, { FormEvent, useState } from 'react'
 
+import githubApi from '../../services/githubApi'
 import logo from '../../assets/logo-github.svg'
 
 import { Title, Form, Repositories } from './DashboardStyles'
 
+interface Repository {
+  id: number;
+  full_name: string;
+  description: string;
+  owner: {
+    avatar_url: string;
+    login: string;
+    html_url: string;
+  }
+}
+
 const Dashboard: React.FC = () => {
+  const [newRepo, setNewRepo] = useState('')
+  const [repositories, setRepositories] = useState<Repository[]>([])
+
+  async function handleAddRepository (event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const { data } = await githubApi.get(`repos/${newRepo}`)
+
+    const repository = data as Repository
+
+    setRepositories([...repositories, repository])
+    setNewRepo('')
+  }
+
   return (
     <>
       <img src={logo} alt='Logotipo github explore'/>
       <Title>Explore repositórios no Github.</Title>
-      <Form>
+      <Form action="" onSubmit={handleAddRepository}>
         <input
           type='text'
-          name='repository'
+          value={newRepo}
+          onChange={(e) => setNewRepo(e.target.value)}
           placeholder='Digite o nome do repositorio'
         />
         <button type="submit">Pesquisar</button>
       </Form>
 
       <Repositories>
-        <a href="#">
-          <img src="https://avatars2.githubusercontent.com/u/32946164?s=400&u=94f8c4fca707024de0c6e94a271219509e39c2f2&v=4" alt="Foto de usuário"/>
-          <div>
-            <strong>Github-explore</strong>
-            <p>Aplicação para explorar repositório de usuários no github.</p>
-          </div>
-          <span className="icon-rep">{'>'}</span>
-        </a>
-
-        <a href="#">
-          <img src="https://avatars2.githubusercontent.com/u/32946164?s=400&u=94f8c4fca707024de0c6e94a271219509e39c2f2&v=4" alt="Foto de usuário"/>
-          <div>
-            <strong>Github-explore</strong>
-            <p>Aplicação para explorar repositório de usuários no github.</p>
-          </div>
-          <span className="icon-rep">{'>'}</span>
-        </a>
-
-        <a href="#">
-          <img src="https://avatars2.githubusercontent.com/u/32946164?s=400&u=94f8c4fca707024de0c6e94a271219509e39c2f2&v=4" alt="Foto de usuário"/>
-          <div>
-            <strong>Github-explore</strong>
-            <p>Aplicação para explorar repositório de usuários no github.</p>
-          </div>
-          <span className="icon-rep">{'>'}</span>
-        </a>
+        {repositories.map(repository => (
+          <a key={repository.id} href={repository.owner.html_url} target="blank">
+            <img
+              src={repository.owner.avatar_url}
+              alt={repository.owner.login}
+            />
+            <div>
+              <strong>{repository.full_name}</strong>
+              <p>{repository.description}</p>
+            </div>
+            <span className="icon-rep">{'>'}</span>
+          </a>
+        ))}
       </Repositories>
     </>
   )

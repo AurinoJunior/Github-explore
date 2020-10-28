@@ -63,7 +63,7 @@ export const Repositories = styled.div`
     }
 
     div {
-      margin-left: 16px;
+      padding: 0 16px;
 
       strong {
         color: #3a3a3a;
