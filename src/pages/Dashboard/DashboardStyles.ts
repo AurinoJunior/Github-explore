@@ -11,6 +11,10 @@ export const Form = styled.form`
   display: flex;
   margin-top: 40px;
 
+  .has-error {
+    border: solid 2px #c53030;
+  }
+
   input {
     flex: 1;
     height: 70px;
@@ -34,6 +38,11 @@ export const Form = styled.form`
     height: 70px;
     width: 210px;
   }
+`
+export const Error = styled.span`
+  color: #c53030;
+  display: block;
+  margin-top: 10px;
 `
 
 export const Repositories = styled.div`
