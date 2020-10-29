@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import githubApi from '../../services/githubApi'
 import logo from '../../assets/logo-github.svg'
@@ -76,7 +77,7 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map(repository => (
-          <a key={repository.id} href={repository.owner.html_url} target="blank">
+          <Link key={repository.full_name} to={`/repositories/${repository.full_name}`} target="blank">
             <img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
@@ -86,7 +87,7 @@ const Dashboard: React.FC = () => {
               <p>{repository.description}</p>
             </div>
             <span className="icon-rep">{'>'}</span>
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>
