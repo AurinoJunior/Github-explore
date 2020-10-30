@@ -17,7 +17,7 @@ export const Header = styled.header`
       color: #707070;
     }
 
-    .icon-rep {
+    .icon-back {
       font-family: 'Nanum Gothic', sans-serif;
       font-size: 12px;
       margin-right: 5px;
@@ -67,6 +67,48 @@ export const RepositoryInfo = styled.div`
       span {
         color: #737380;
       }
+    }
+  }
+`
+export const Issues = styled.div`
+  margin-top: 80px;
+
+  a {
+    align-items: center;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    padding: 24px;
+    text-decoration: none;
+    transition: 0.2s;
+
+    & + a {
+      margin-top: 10px;
+    }
+
+    &:hover {
+      transform: translateX(10px);
+    }
+
+    div {
+      padding: 0 16px;
+
+      strong {
+        color: #3a3a3a;
+        font-size: 20px;
+      }
+
+      p {
+        color: #a8a8b3;
+        font-size: 18px;
+        margin-top: 4px;
+      }
+    }
+
+    .icon-rep {
+      color: #a8a8b3;
+      font-family: 'Nanum Gothic', sans-serif;
+      margin-left: auto;
     }
   }
 `

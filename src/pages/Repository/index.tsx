@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import logo from '../../assets/logo-github.svg'
 
-import { Header, RepositoryInfo } from './RepositoryStyles'
+import { Header, RepositoryInfo, Issues } from './RepositoryStyles'
 
 interface RepositoryParams {
   repository_name: string;
@@ -18,7 +18,7 @@ const Repository: React.FC = () => {
       <Header>
         <img src={logo} alt="Logotipo github explore"/>
         <Link to="/">
-          <span className="icon-rep">{'<'}</span>
+          <span className="icon-back">{'<'}</span>
         VOLTAR
         </Link>
       </Header>
@@ -46,6 +46,16 @@ const Repository: React.FC = () => {
           </li>
         </ul>
       </RepositoryInfo>
+
+      <Issues>
+        <Link to='#' target="blank">
+          <div>
+            <strong>djasaun</strong>
+            <p>spjdas</p>
+          </div>
+          <span className="icon-rep">{'>'}</span>
+        </Link>
+      </Issues>
     </>
   )
 }
