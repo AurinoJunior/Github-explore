@@ -84,8 +84,8 @@ export const Repositories = styled.div`
         font-size: 18px;
         margin-top: 4px;
       }
-
     }
+
     .icon-rep {
       color: #a8a8b3;
       font-family: 'Nanum Gothic', sans-serif;
