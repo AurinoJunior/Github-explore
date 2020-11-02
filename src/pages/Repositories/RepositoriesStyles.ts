@@ -9,7 +9,6 @@ export const Header = styled.header`
     align-items: center;
     color: #a8a8b3;
     display:flex;
-    font-size: 14px;
     text-decoration: none;
     transition: 0.2s;
 
@@ -19,7 +18,7 @@ export const Header = styled.header`
 
     .icon-back {
       font-family: 'Nanum Gothic', sans-serif;
-      font-size: 12px;
+      font-size: 10px;
       margin-right: 5px;
     }
   }
