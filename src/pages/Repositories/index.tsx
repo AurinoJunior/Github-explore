@@ -67,7 +67,7 @@ const Repositories: React.FC = () => {
       {repository && (
         <RepositoryInfo>
           <header>
-            <img src="https://avatars2.githubusercontent.com/u/32946164?s=400&u=94f8c4fca707024de0c6e94a271219509e39c2f2&v=4" alt="Foto do autor" />
+            <img src={repository.owner.avatar_url} alt={repository.owner.login} />
             <div>
               <h2>{repository.full_name}</h2>
               <p>{repository.description}</p>
